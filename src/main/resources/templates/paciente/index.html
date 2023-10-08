@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Paciente Cadastrados</title>
+</head>
+
+<body class="blue lighten-5">
+
+    <nav class="blue darken-1">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Hospital Manager</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="active"><a class="active" href="/paciente">Pacientes</a></li>
+                <li><a href="#">Médicos</a></li>
+                <li><a href="#">Consultas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <main class="container">
+        <h2>Pacientes Cadastrados</h2>
+
+        <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                  <th>Nome</th>
+                  <th>Cpf</th>
+                  <th>Data Nascismento</th>
+                  <th>E-mail</th>
+                  <th>Telefone</th>
+                  <th>Endereço</th>
+                  <th></th>
+                  <th></th>
+              
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr th:each="paciente : ${pacientes}">
+                <td th:text="${paciente.nome}" ></td>
+                <td th:text="${paciente.cpf}"></td>
+                <td th:text="${paciente.dataNascimento}"></td>
+                <td th:text="${paciente.email}"></td>
+                <td th:text="${paciente.telefone}">45475136</td>
+                <td th:text="${paciente.endereco}">R dr joao aranha neto 1386</td>
+            
+                <td><a class="waves-effect waves-light btn-small"><i class=" material-icons">mode_edit</i></a></td>
+                <td><a class="waves-effect waves-light btn-small  pink accent-3"><i class="material-icons ">delete</i></a></td>
+              </tr>
+            </tbody>
+          </table>
+
+        
+
+    </main>
+
+
+
+
+
+</body>
+
+</html>
