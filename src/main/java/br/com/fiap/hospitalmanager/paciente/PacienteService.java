@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class PacienteService {
 
@@ -17,8 +18,18 @@ public class PacienteService {
     }
 
 
-    public void delete(Long id) {
+    public boolean delete(Long id) {
+        var paciente = repository.findById(id);
+        if(paciente.isEmpty()) return false;
         repository.deleteById(id);
+        return true;
+    }
+
+
+    
+    public void save(Paciente paciente) {
+        repository.save(paciente);
+        
     }
 
 
