@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <title>Paciente Cadastrado</title>
+</head>
+
+<body class="blue lighten-5">
+
+  <nav class="blue darken-1">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Hospital Manager</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="active"><a href="/paciente">Pacientes</a></li>
+        <li><a href="/medico">Médicos</a></li>
+        <li><a href="#">Consultas</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+  <main class="container">
+
+
+    <h2>Cadastrar Paciente</h2>
+
+    <div class="card">
+      <form class="col s12" th:action="${'/paciente'}" method="post" th:object="${paciente}">
+        <div class="card-content">
+          <div class="row">
+            <div class="input-field col s12">
+              <input th:field="*{nome}" type="text" class="validate">
+              <label for="nome">Nome Completo</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input th:field="*{cpf}" type="text"  class="validate">
+              <label for="cpf">CPF</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input  th:field="*{email}" type="email"   class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input th:field="*{telefone}" type="text"     class="validate">
+              <label for="telefone">Telefone</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input th:field="*{endereco}" type="text" class="validate">
+              <label for="endereco">Endereco</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input th:field="*{dataNascimento}" type="date"   class="validate">
+              <label for="dataNascimento">Data de Nascimento</label>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card-action right-align">
+              <a href="/paciente">Cancelar</a>
+              <button class="btn">Cadastar</button>
+        </div>
+
+
+      </form>
+
+
+    </div>
+
+
+
+    </div>
+
+  </main>
+
+
+
+
+
+</body>
+
+</html>
