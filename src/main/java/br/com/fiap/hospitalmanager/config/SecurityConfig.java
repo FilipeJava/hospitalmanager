@@ -13,7 +13,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception{
         return http
-        .oauth2Client(Customizer.withDefaults())
+        .oauth2Login(Customizer.withDefaults())
         .formLogin(Customizer.withDefaults())
         .build();
     }
