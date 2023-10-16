@@ -50,23 +50,23 @@
             </thead>
     
             <tbody>
-              <tr th:each="paciente : ${pacientes}">
-                <td th:text="${paciente.nome}" ></td>
-                <td th:text="${paciente.cpf}"></td>
-                <td th:text="${paciente.dataNascimento}"></td>
-                <td th:text="${paciente.email}"></td>
-                <td th:text="${paciente.telefone}"></td>
-                <td th:text="${paciente.endereco}"></td>
+              <tr th:each="p : ${pacientes}">
+                <td th:text="${p.nome}" ></td>
+                <td th:text="${p.cpf}"></td>
+                <td th:text="${p.dataNascimento}"></td>
+                <td th:text="${p.email}"></td>
+                <td th:text="${p.telefone}"></td>
+                <td th:text="${p.endereco}"></td>
             
                 <td><a class="waves-effect waves-light btn-small"><i class=" material-icons">mode_edit</i></a></td>
-                <td><a th:href = "${'/paciente/delete/'+ paciente.id}" class="waves-effect waves-light btn-small  pink accent-3"><i class="material-icons ">delete</i></a></td>
+                <td><a th:href = "${'/paciente/delete/'+ p.id}" class="waves-effect waves-light btn-small  pink accent-3"><i class="material-icons ">delete</i></a></td>
               </tr>
             </tbody>
           </table>
         </div>
 
           <div class="fixed-action-btn">
-                <a class="btn-floating btn-large cyan pulse darken-1">
+                <a class="btn-floating btn-large cyan pulse darken-1" href="paciente/new">
             <i class="large material-icons">add</i>
           </a>
          
