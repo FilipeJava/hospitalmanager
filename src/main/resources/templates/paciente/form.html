@@ -31,7 +31,7 @@
     <h2>Cadastrar Paciente</h2>
 
     <div class="card">
-      <form class="col s12" action="/paciente" method="post" th:object="${paciente}">
+      <form class="col s12" th:action="${'/paciente'}" method="post" th:object="${paciente}">
         <div class="card-content">
           <div class="row">
             <div class="input-field col s12">
