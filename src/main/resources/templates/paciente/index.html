@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link  rel ="stylesheet" href="style.css">
     <title>Paciente Cadastrados</title>
 </head>
 
@@ -14,10 +15,13 @@
     <nav class="blue darken-1">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo">Hospital Manager</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <ul id="nav-mobile" class="right hide-on-med-and-down ">
                 <li  class="active"><a href="/paciente">Pacientes</a></li>
                 <li><a href="/medico">Médicos</a></li>
                 <li><a href="#">Consultas</a></li>
+                <li>
+                  <img class="avatar" th:src="${avatar_url}"/>
+                </li>
             </ul>
         </div>
     </nav>

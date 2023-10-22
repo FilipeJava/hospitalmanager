@@ -35,43 +35,49 @@
         <div class="card-content">
           <div class="row">
             <div class="input-field col s12">
-              <input th:field="*{nome}" type="text" class="validate">
+              <input th:field="*{nome}" type="text"  th:classappend="${#fields.hasErrors('nome')} ? invalid">
               <label for="nome">Nome Completo</label>
+              <span class="helper-text red-text" th:errors="*{nome}"></span>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <input th:field="*{cpf}" type="text"  class="validate">
+              <input th:field="*{cpf}" type="text" th:classappend="${#fields.hasErrors('cpf')} ? invalid">
               <label for="cpf">CPF</label>
+              <span class="helper-text red-text" th:errors="*{cpf}"></span>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <input  th:field="*{email}" type="email"   class="validate">
+              <input  th:field="*{email}" type="email" th:classappend="${#fields.hasErrors('email')} ? invalid">
               <label for="email">Email</label>
+              <span class="helper-text red-text" th:errors="*{email}"></span>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <input th:field="*{telefone}" type="text"     class="validate">
+              <input th:field="*{telefone}" type="text"   th:classappend="${#fields.hasErrors('telefone')} ? invalid">
               <label for="telefone">Telefone</label>
+              <span class="helper-text red-text" th:errors="*{telefone}"></span>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <input th:field="*{endereco}" type="text" class="validate">
+              <input th:field="*{endereco}" type="text" th:classappend="${#fields.hasErrors('endereco')} ? invalid">
               <label for="endereco">Endereco</label>
+              <span class="helper-text red-text" th:errors="*{endereco}"></span>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <input th:field="*{dataNascimento}" type="date"   class="validate">
+              <input th:field="*{dataNascimento}" type="date"  th:classappend="${#fields.hasErrors('dataNascimento')} ? invalid">
               <label for="dataNascimento">Data de Nascimento</label>
+              <span class="helper-text red-text" th:errors="*{dataNascimento}"></span>
             </div>
           </div>
 
