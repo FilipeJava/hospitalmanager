@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <title>Paciente Cadastrado</title>
+  <title th:text="#{registered.patients}"></title>
 </head>
 
 <body class="blue lighten-5">
@@ -16,9 +16,9 @@
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Hospital Manager</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class="active"><a href="/paciente">Pacientes</a></li>
-        <li><a href="/medico">Médicos</a></li>
-        <li><a href="#">Consultas</a></li>
+        <li class="active"><a href="/paciente" th:text="#{hospital.patients}"></a></li>
+        <li><a href="/medico" th:text="#{hospital.doctors}" ></a></li>
+        <li><a href="#" th:text="#{hospital.appointment}"></a></li>
       </ul>
     </div>
   </nav>
@@ -28,7 +28,7 @@
   <main class="container">
 
 
-    <h2>Cadastrar Paciente</h2>
+    <h2 th:text="#{registered.patients.page}"></h2>
 
     <div class="card">
       <form class="col s12" th:action="${'/paciente'}" method="post" th:object="${paciente}">
@@ -36,7 +36,7 @@
           <div class="row">
             <div class="input-field col s12">
               <input th:field="*{nome}" type="text"  th:classappend="${#fields.hasErrors('nome')} ? invalid">
-              <label for="nome">Nome Completo</label>
+              <label for="nome"  th:text="#{patients.name}"></label>
               <span class="helper-text red-text" th:errors="*{nome}"></span>
             </div>
           </div>
@@ -44,7 +44,7 @@
           <div class="row">
             <div class="input-field col s12">
               <input th:field="*{cpf}" type="text" th:classappend="${#fields.hasErrors('cpf')} ? invalid">
-              <label for="cpf">CPF</label>
+              <label for="cpf" th:text="#{patients.doc}"></label>
               <span class="helper-text red-text" th:errors="*{cpf}"></span>
             </div>
           </div>
@@ -52,7 +52,7 @@
           <div class="row">
             <div class="input-field col s12">
               <input  th:field="*{email}" type="email" th:classappend="${#fields.hasErrors('email')} ? invalid">
-              <label for="email">Email</label>
+              <label for="email" th:text="#{patients.email}"></label>
               <span class="helper-text red-text" th:errors="*{email}"></span>
             </div>
           </div>
@@ -60,7 +60,7 @@
           <div class="row">
             <div class="input-field col s12">
               <input th:field="*{telefone}" type="text"   th:classappend="${#fields.hasErrors('telefone')} ? invalid">
-              <label for="telefone">Telefone</label>
+              <label for="telefone" th:text="#{patients.phone}"></label>
               <span class="helper-text red-text" th:errors="*{telefone}"></span>
             </div>
           </div>
@@ -68,7 +68,7 @@
           <div class="row">
             <div class="input-field col s12">
               <input th:field="*{endereco}" type="text" th:classappend="${#fields.hasErrors('endereco')} ? invalid">
-              <label for="endereco">Endereco</label>
+              <label for="endereco" th:text="#{patients.address}"></label>
               <span class="helper-text red-text" th:errors="*{endereco}"></span>
             </div>
           </div>
@@ -76,7 +76,7 @@
           <div class="row">
             <div class="input-field col s12">
               <input th:field="*{dataNascimento}" type="date"  th:classappend="${#fields.hasErrors('dataNascimento')} ? invalid">
-              <label for="dataNascimento">Data de Nascimento</label>
+              <label for="dataNascimento" th:text="#{patients.date}"></label>
               <span class="helper-text red-text" th:errors="*{dataNascimento}"></span>
             </div>
           </div>
@@ -84,8 +84,8 @@
         </div>
 
         <div class="card-action right-align">
-              <a href="/paciente">Cancelar</a>
-              <button class="btn">Cadastar</button>
+              <a href="/paciente" th:text="#{patients.button.cancel}" ></a>
+              <button class="btn" th:text="#{patients.button.save}"></button>
         </div>
 
 

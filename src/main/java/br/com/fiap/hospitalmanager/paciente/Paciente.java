@@ -21,11 +21,12 @@ public class Paciente {
     Long id;
 
     @NotBlank
-    @Size(min = 3, message = "o campo deve conter no mínimo 3 caracteres") 
+    @Size(min = 3, message = "{patients.name.size}") //"o campo deve conter no mínimo 3 caracteres"  
     String nome;
  
     @NotBlank
-    @Size(min = 11 , message = "o campo deve conter no mínimo 11 caracteres")
+    @Size(min = 11 , message = "{patients.doc.size}") //"o campo deve conter no mínimo 11 caracteres"   
+   
     String cpf;
 
     @Email
