@@ -3,6 +3,8 @@ package br.com.fiap.hospitalmanager.paciente;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class PacienteController {
     @Autowired
     PacienteService service;
 
+    @Autowired
+    MessageSource messageSource;
+
     @GetMapping
     public String index(Model model,@AuthenticationPrincipal OAuth2User user){
        model.addAttribute("avatar_url",user.getAttribute("avatar_url"));
@@ -37,10 +42,10 @@ public class PacienteController {
     public String delete (@PathVariable Long id , RedirectAttributes redirect){
 
         if (service.delete(id)){
-           redirect.addFlashAttribute("success", "Paciente apagado com Sucesso"); 
+           redirect.addFlashAttribute("success", getMessage("patients.delete.success")); 
 
         } else{
-            redirect.addFlashAttribute("error", "Paciente não encontrado"); 
+            redirect.addFlashAttribute("error",getMessage("patients.notfound")); 
         }
         
         return"redirect:/paciente";
@@ -58,7 +63,7 @@ public class PacienteController {
 
          if (result.hasErrors()) return "/paciente/form";
 
-        redirect.addFlashAttribute("success", "Paciente cadastrado com Sucesso"); 
+        redirect.addFlashAttribute("success", getMessage("patients.registered.success")); 
         service.save(paciente);
 
        return"redirect:/paciente";
@@ -73,7 +78,7 @@ public class PacienteController {
             model.addAttribute("paciente", paciente.get());
         } else {
             // Redirecione para uma página de erro ou lide com a situação de paciente não encontrado
-            model.addAttribute("error", "Paciente não encontrado");
+            model.addAttribute("error", getMessage("patients.notfound"));
             return "redirect:/paciente";            
         }
 
@@ -91,8 +96,12 @@ public class PacienteController {
         paciente.setId(id);
         service.save(paciente);
 
-        redirect.addFlashAttribute("success", "Paciente atualizado com sucesso");
+        redirect.addFlashAttribute("success",getMessage("patients.update.success"));
         return "redirect:/paciente";
+    }
+
+    private String getMessage(String code){
+        return messageSource.getMessage(code,null,LocaleContextHolder.getLocale());
     }
 
 
