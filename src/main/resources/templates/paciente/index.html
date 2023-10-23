@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link rel="stylesheet" href="style.css">
-  <title>Paciente Cadastrados</title>
+  <title th:text="#{registered.patients}"></title>
 </head>
 
 <body class="blue lighten-5">
@@ -17,9 +17,9 @@
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Hospital Manager</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down ">
-        <li class="active"><a href="/paciente">Pacientes</a></li>
-        <li><a href="/medico">Médicos</a></li>
-        <li><a href="#">Consultas</a></li>
+        <li class="active"><a href="/paciente" th:text="#{hospital.patients}"></a></li>
+        <li><a href="/medico"  th:text="#{hospital.doctors}" ></a></li>
+        <li><a href="#" th:text="#{hospital.appointment}"></a></li>
         <li>
           <!-- Dropdown Trigger -->
           <a class='dropdown-trigger ' href='#' data-target='dropdown1'>
@@ -49,7 +49,7 @@
     <span class="card-panel teal lighten-3" th:if="${success}" th:text="${success}"></span>
     <span class="card-panel red white-text" th:if="${error}" th:text="${error}"></span>
 
-    <h2>Pacientes Cadastrados</h2>
+    <h2 th:text="#{registered.patients}"></h2>
 
 
 
@@ -57,12 +57,12 @@
       <table class="highlight responsive-table">
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>Cpf</th>
-            <th>Data Nascismento</th>
-            <th>E-mail</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
+            <th th:text="#{patients.name}" ></th>
+            <th th:text="#{patients.doc}" ></th>
+            <th th:text="#{patients.date}"></th>
+            <th th:text="#{patients.email}"></th>
+            <th th:text="#{patients.phone}"></th>
+            <th th:text="#{patients.address}"></th>
             <th></th>
             <th></th>
 
