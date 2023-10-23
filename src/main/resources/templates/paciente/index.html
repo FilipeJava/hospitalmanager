@@ -2,86 +2,112 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link  rel ="stylesheet" href="style.css">
-    <title>Paciente Cadastrados</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Paciente Cadastrados</title>
 </head>
 
 <body class="blue lighten-5">
 
-    <nav class="blue darken-1">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Hospital Manager</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down ">
-                <li  class="active"><a href="/paciente">Pacientes</a></li>
-                <li><a href="/medico">Médicos</a></li>
-                <li><a href="#">Consultas</a></li>
-                <li>
-                  <img class="avatar" th:src="${avatar_url}"/>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-
-
-    <main class="container"> 
-
-      <span class="card-panel teal lighten-3" th:if="${success}" th:text="${success}" ></span>
-      <span class="card-panel red white-text" th:if="${error}" th:text="${error}" ></span>
-
-        <h2>Pacientes Cadastrados</h2>
-
-      
-
-        <div>
-          <table class="highlight responsive-table">
-            <thead>
-              <tr>
-                  <th>Nome</th>
-                  <th>Cpf</th>
-                  <th>Data Nascismento</th>
-                  <th>E-mail</th>
-                  <th>Telefone</th>
-                  <th>Endereço</th>
-                  <th></th>
-                  <th></th>
-              
-              </tr>
-            </thead>
-    
-            <tbody>
-              <tr th:each="p : ${pacientes}">
-                <td th:text="${p.nome}" ></td>
-                <td th:text="${p.cpf}"></td>
-                <td th:text="${p.dataNascimento}"></td>
-                <td th:text="${p.email}"></td>
-                <td th:text="${p.telefone}"></td>
-                <td th:text="${p.endereco}"></td>
-            
-                <td><a th:href="${'/paciente/update/'+ p.id}" class="waves-effect waves-light btn-small"><i class=" material-icons">mode_edit</i></a></td>
-                <td><a th:href = "${'/paciente/delete/'+ p.id}" class="waves-effect waves-light btn-small  pink accent-3"><i class="material-icons ">delete</i></a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-          <div class="fixed-action-btn">
-                <a class="btn-floating btn-large cyan pulse darken-1" href="paciente/new">
-            <i class="large material-icons">add</i>
+  <nav class="blue darken-1">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Hospital Manager</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down ">
+        <li class="active"><a href="/paciente">Pacientes</a></li>
+        <li><a href="/medico">Médicos</a></li>
+        <li><a href="#">Consultas</a></li>
+        <li>
+          <!-- Dropdown Trigger -->
+          <a class='dropdown-trigger ' href='#' data-target='dropdown1'>
+            <img class="avatar" th:src="${avatar_url}" />
           </a>
-         
-        </div>
 
-    </main>
+          <!-- Dropdown Structure -->
+          <ul id='dropdown1' class='dropdown-content'>
+            <li><span th:text="${username}"></span></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="/logout"><i class="material-icons">logout</i>sair</a></li>
+          </ul>
+
+          
+        </li>
+       
+      </ul>
+    </div>
+  </nav>
+
+  
+  
+
+
+  <main class="container">
+
+    <span class="card-panel teal lighten-3" th:if="${success}" th:text="${success}"></span>
+    <span class="card-panel red white-text" th:if="${error}" th:text="${error}"></span>
+
+    <h2>Pacientes Cadastrados</h2>
 
 
 
+    <div>
+      <table class="highlight responsive-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Cpf</th>
+            <th>Data Nascismento</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th></th>
+            <th></th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr th:each="p : ${pacientes}">
+            <td th:text="${p.nome}"></td>
+            <td th:text="${p.cpf}"></td>
+            <td th:text="${p.dataNascimento}"></td>
+            <td th:text="${p.email}"></td>
+            <td th:text="${p.telefone}"></td>
+            <td th:text="${p.endereco}"></td>
+
+            <td><a th:href="${'/paciente/update/'+ p.id}" class="waves-effect waves-light btn-small"><i
+                  class=" material-icons">mode_edit</i></a></td>
+            <td><a th:href="${'/paciente/delete/'+ p.id}" class="waves-effect waves-light btn-small  pink accent-3"><i
+                  class="material-icons ">delete</i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large cyan pulse darken-1" href="paciente/new">
+        <i class="large material-icons">add</i>
+      </a>
+
+    </div>
+
+  </main>
 
 
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    const options={
+      coverTrigger:false,
+      constrainWidth:false,
+    }
+    var instances = M.Dropdown.init(elems, options);
+  });
+</script>
 
 </html>
