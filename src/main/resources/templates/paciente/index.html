@@ -62,7 +62,7 @@
                 <td th:text="${p.telefone}"></td>
                 <td th:text="${p.endereco}"></td>
             
-                <td><a class="waves-effect waves-light btn-small"><i class=" material-icons">mode_edit</i></a></td>
+                <td><a th:href="${'/paciente/update/'+ p.id}" class="waves-effect waves-light btn-small"><i class=" material-icons">mode_edit</i></a></td>
                 <td><a th:href = "${'/paciente/delete/'+ p.id}" class="waves-effect waves-light btn-small  pink accent-3"><i class="material-icons ">delete</i></a></td>
               </tr>
             </tbody>
